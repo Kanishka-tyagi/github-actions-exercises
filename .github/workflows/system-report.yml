@@ -1,0 +1,24 @@
+name: System report
+on:
+    push
+
+jobs:
+    system-info:
+        runs-on: Ubuntu-latest
+        steps:
+            - run: uname -s
+            - run : uname -r
+            - run: df -h
+            - run: date
+            - run: sudo apt install tree -y
+            - run: tree -L 2 ~
+    tool-check:
+        runs-on: Ubuntu-latest
+        steps:
+            - run: sudo apt install jq -y
+            - run: echo '{"john":21, "jessica":45, "Denver":45}' >> report.json
+            - run: jq .john report.json
+            - run: python3 --version
+            - run: git --version
+            - run: jq --version
+            - run: echo "Report Complete"
