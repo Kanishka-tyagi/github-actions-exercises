@@ -1,0 +1,23 @@
+name: Multi-trigger-detective
+on:
+    push:
+    pull_request:
+    workflow_dispatch:
+jobs:
+    Trigger-Detective:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Name of the event
+              run: echo "event is ${{github.event_name}}"
+            - name: Checking for event
+              run: |
+                if [ "${{ github.event_name }}" = "push" ]
+                then
+                    echo "The branch is ${{ github.ref_name }}"
+                elif [ "${{ github.event_name}}" = "pull_request" ]
+                then 
+                    echo "The branch is merge from ${{github.head_ref}} to ${{github.base_ref}}"
+                fi
+                    
+            - name: Finish 
+              run: echo "Detective work complete"
