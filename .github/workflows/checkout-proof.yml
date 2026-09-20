@@ -1,0 +1,16 @@
+name: Checkout Proof
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+    prove:
+        runs-on: ubuntu-latest
+        steps:
+            - run: pwd
+            - run: ls
+            - uses: actions/checkout@v4
+            - run: ls
+            - run: ls | wc -l 
+            - run: echo "Proof captured" 
+
