@@ -13,6 +13,6 @@ jobs:
             - name: The PR branch merged into
               run: echo "PR is merged into ${{github.base_ref}}"
             - name: Prints PR number
-              run: echo "PR number is ${{github.event.number}}"
+              run: echo "PR number is ${{github.event.pull_request.number}}"
             - name: Finish
               run: echo "Gatekeeper checks complete"
